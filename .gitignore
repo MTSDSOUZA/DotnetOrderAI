@@ -1,0 +1,16 @@
+# Ignorar a pasta do Visual Studio
+.vs/
+
+# Ignorar arquivos compilados e temporários
+bin/
+obj/
+
+# Ignorar arquivos de configuração do ambiente
+*.user
+*.suo
+
+# Ignorar arquivos temporários do sistema operacional
+*.log
+*.tmp
+.DS_Store
+Thumbs.db
