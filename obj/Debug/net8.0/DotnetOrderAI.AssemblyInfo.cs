@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DotnetOrderAI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+709843cd2206d9eb5b9c592d9b6e549adb1e1f22")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+795b159528bf864a2c0b1f08442db0876faa4be6")]
 [assembly: System.Reflection.AssemblyProductAttribute("DotnetOrderAI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DotnetOrderAI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

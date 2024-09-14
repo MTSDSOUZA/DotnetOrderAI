@@ -79,7 +79,7 @@ namespace DotnetOrderAI.Controllers
             try
             {
                 var result = await usuarioRepository.GetUsuario(usuario.Id);
-                if (result == null) return NotFound($"Empregado chamado = {usuario.nome} não encontrado");
+                if (result == null) return NotFound($"Usuário chamado = {usuario.nome} não encontrado");
 
                 return await usuarioRepository.UpdateUsuario(usuario);
             }
@@ -90,7 +90,7 @@ namespace DotnetOrderAI.Controllers
         }
         #endregion
 
-        #region DELETE para deletar um empregado
+        #region DELETE para deletar um usuario
         [HttpDelete("{id:int}")]
         public async Task<ActionResult<Usuario>> DeleteUsuario(int id)
         {
