@@ -97,7 +97,7 @@ namespace DotnetOrderAI.Controllers
             try
             {
                 var result = await usuarioRepository.GetUsuario(id);
-                if (result == null) return NotFound($"Empregado com id = {id} não encontrado");
+                if (result == null) return NotFound($"Usuário com id = {id} não encontrado");
 
                 usuarioRepository.DeleteUsuario(id);
 
