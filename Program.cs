@@ -15,6 +15,8 @@ options.UseOracle(builder.Configuration.GetConnectionString("OracleConnection"))
 
 builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
 builder.Services.AddScoped<IPagamentoRepository, PagamentoRepository>();
+builder.Services.AddScoped<IPedidoRepository, PedidoRepository>();
+builder.Services.AddScoped<IItemPedidoRepository, ItemPedidoRepository>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
