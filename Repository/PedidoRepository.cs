@@ -19,7 +19,7 @@ namespace DotnetOrderAI.Repository
             return result.Entity;
         }
 
-        public async void DeletePedido(int Id)
+        public async Task DeletePedido(int Id)
         {
             var result = await dbContext.TabelaPedido.FirstOrDefaultAsync(e => e.Id == Id);
             if (result != null)

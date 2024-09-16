@@ -17,6 +17,9 @@ namespace DotnetOrderAI.Controllers
         }
         #endregion
 
+        /// <summary>
+        /// Retorna a tabela completa de pedidos
+        /// </summary>
         #region GET para buscar todos os pedidos
         [HttpGet]
         public async Task<ActionResult> getPedido()
@@ -32,6 +35,9 @@ namespace DotnetOrderAI.Controllers
         }
         #endregion
 
+        /// <summary>
+        /// Retorna Pedido com o id especificado
+        /// </summary>
         #region GET para buscar um pedido usando o ID
         [HttpGet("{id:int}")]
         public async Task<ActionResult<Pedido>> getPedido(int id)
@@ -50,6 +56,12 @@ namespace DotnetOrderAI.Controllers
         }
         #endregion
 
+        /// <summary>
+        /// Inserção de um novo pedido
+        /// </summary>
+        /// <response code="201">Retorna pedido criado</response>
+        /// <response code="400">Se o Request for enviado nulo</response>
+        /// <response code="500">Se houver algum erro no banco de dados</response>
         #region POST para criar um novo pedido
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
@@ -72,6 +84,9 @@ namespace DotnetOrderAI.Controllers
         }
         #endregion
 
+        /// <summary>
+        /// Altera pedido com o id especificado
+        /// </summary>
         #region PUT para atualizar um pedido
         [HttpPut("{id:int}")]
         public async Task<ActionResult<Pedido>> UpdateEmrpegado([FromBody] Pedido pedido)
@@ -90,6 +105,9 @@ namespace DotnetOrderAI.Controllers
         }
         #endregion
 
+        /// <summary>
+        /// Deleta pedido com o id especificado
+        /// </summary>
         #region DELETE para deletar um pedido
         [HttpDelete("{id:int}")]
         public async Task<ActionResult<Pedido>> DeletePedido(int id)
@@ -99,9 +117,9 @@ namespace DotnetOrderAI.Controllers
                 var result = await pedidoRepository.GetPedido(id);
                 if (result == null) return NotFound($"Pedido com id = {id} não encontrado");
 
-                pedidoRepository.DeletePedido(id);
+                await pedidoRepository.DeletePedido(id);
 
-                return result;
+                return Ok("Pedido deletado com sucesso.");
             }
             catch (Exception)
             {

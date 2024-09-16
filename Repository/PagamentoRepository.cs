@@ -19,7 +19,7 @@ namespace DotnetOrderAI.Repository
             return result.Entity;
         }
 
-        public async void DeletePagamento(int Id)
+        public async Task DeletePagamento(int Id)
         {
             var result = await dbContext.TabelaPagamento.FirstOrDefaultAsync(e => e.Id == Id);
             if (result != null)

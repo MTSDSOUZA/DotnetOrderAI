@@ -8,6 +8,6 @@ namespace DotnetOrderAI.Repository.Interface
         Task<Pagamento> GetPagamento(int Id);
         Task<Pagamento> AddPagamento(Pagamento pagamento);
         Task<Pagamento> UpdatePagamento(Pagamento pagamento);
-        void DeletePagamento(int Id);
+        Task DeletePagamento(int Id);
     }
 }

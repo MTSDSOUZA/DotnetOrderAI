@@ -17,6 +17,9 @@ namespace DotnetOrderAI.Controllers
         }
         #endregion
 
+        /// <summary>
+        /// Retorna a tabela completa de usuarios
+        /// </summary>
         #region GET para buscar todos os usuarios
         [HttpGet]
         public async Task<ActionResult> getUsuario()
@@ -32,6 +35,9 @@ namespace DotnetOrderAI.Controllers
         }
         #endregion
 
+        /// <summary>
+        /// Retorna usuario com o id especificado
+        /// </summary>
         #region GET para buscar um usuario usando o ID
         [HttpGet("{id:int}")]
         public async Task<ActionResult<Usuario>> getUsuario(int id)
@@ -50,6 +56,12 @@ namespace DotnetOrderAI.Controllers
         }
         #endregion
 
+        /// <summary>
+        /// Inserção de um novo usuario
+        /// </summary>
+        /// <response code="201">Retorna usuario criado</response>
+        /// <response code="400">Se o Request for enviado nulo</response>
+        /// <response code="500">Se houver algum erro no banco de dados</response>
         #region POST para criar um novo usuario
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
@@ -72,6 +84,9 @@ namespace DotnetOrderAI.Controllers
         }
         #endregion
 
+        /// <summary>
+        /// Altera usuario com o id especificado
+        /// </summary>
         #region PUT para atualizar um usuario
         [HttpPut("{id:int}")]
         public async Task<ActionResult<Usuario>> UpdateEmrpegado([FromBody] Usuario usuario)
@@ -90,6 +105,9 @@ namespace DotnetOrderAI.Controllers
         }
         #endregion
 
+        /// <summary>
+        /// Deleta usuario com o id especificado
+        /// </summary>
         #region DELETE para deletar um usuario
         [HttpDelete("{id:int}")]
         public async Task<ActionResult<Usuario>> DeleteUsuario(int id)
@@ -99,9 +117,9 @@ namespace DotnetOrderAI.Controllers
                 var result = await usuarioRepository.GetUsuario(id);
                 if (result == null) return NotFound($"Usuário com id = {id} não encontrado");
 
-                usuarioRepository.DeleteUsuario(id);
+                await usuarioRepository.DeleteUsuario(id);
 
-                return result;
+                return Ok("Usuário deletado com sucesso.");
             }
             catch (Exception)
             {

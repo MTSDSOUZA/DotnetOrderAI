@@ -19,7 +19,7 @@ namespace DotnetOrderAI.Repository
             return result.Entity;
         }
 
-        public async void DeleteUsuario(int Id)
+        public async Task DeleteUsuario(int Id)
         {
             var result = await dbContext.TabelaUsuario.FirstOrDefaultAsync(e => e.Id == Id);
             if (result != null)

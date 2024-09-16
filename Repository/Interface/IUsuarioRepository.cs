@@ -8,6 +8,6 @@ namespace DotnetOrderAI.Repository.Interface
         Task<Usuario> GetUsuario(int userId);
         Task<Usuario> AddUsuario(Usuario user);
         Task<Usuario> UpdateUsuario(Usuario user);
-        void DeleteUsuario(int userId);
+        Task DeleteUsuario(int userId);
     }
 }

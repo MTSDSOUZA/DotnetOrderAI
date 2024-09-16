@@ -17,6 +17,9 @@ namespace DotnetOrderAI.Controllers
         }
         #endregion
 
+        /// <summary>
+        /// Retorna a tabela completa de pagamentos
+        /// </summary>
         #region GET para buscar todos os pagamentos
         [HttpGet]
         public async Task<ActionResult> getPagamento()
@@ -32,6 +35,9 @@ namespace DotnetOrderAI.Controllers
         }
         #endregion
 
+        /// <summary>
+        /// Retorna pagamento com o id especificado
+        /// </summary>
         #region GET para buscar um pagamento usando o ID
         [HttpGet("{id:int}")]
         public async Task<ActionResult<Pagamento>> getPagamento(int id)
@@ -50,6 +56,12 @@ namespace DotnetOrderAI.Controllers
         }
         #endregion
 
+        /// <summary>
+        /// Inserção de um novo pagamento
+        /// </summary>
+        /// <response code="201">Retorna pagamento criado</response>
+        /// <response code="400">Se o Request for enviado nulo</response>
+        /// <response code="500">Se houver algum erro no banco de dados</response>
         #region POST para criar um novo pagamento
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
@@ -72,6 +84,9 @@ namespace DotnetOrderAI.Controllers
         }
         #endregion
 
+        /// <summary>
+        /// Altera pagamento com o id especificado
+        /// </summary>
         #region PUT para atualizar um pagamento
         [HttpPut("{id:int}")]
         public async Task<ActionResult<Pagamento>> UpdateEmrpegado([FromBody] Pagamento pagamento)
@@ -90,6 +105,9 @@ namespace DotnetOrderAI.Controllers
         }
         #endregion
 
+        /// <summary>
+        /// Deleta pagamento com o id especificado
+        /// </summary>
         #region DELETE para deletar um pagamento
         [HttpDelete("{id:int}")]
         public async Task<ActionResult<Pagamento>> DeletePagamento(int id)
@@ -99,9 +117,9 @@ namespace DotnetOrderAI.Controllers
                 var result = await pagamentoRepository.GetPagamento(id);
                 if (result == null) return NotFound($"Empregado com id = {id} não encontrado");
 
-                pagamentoRepository.DeletePagamento(id);
+                await pagamentoRepository.DeletePagamento(id);
 
-                return result;
+                return Ok("Pagamento deletado com sucesso.");
             }
             catch (Exception)
             {

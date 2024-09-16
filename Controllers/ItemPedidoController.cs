@@ -11,6 +11,9 @@ namespace DotnetOrderAI.Controllers
         #region Injeção de dependência
         private readonly IItemPedidoRepository itempedidoRepository;
 
+        /// <summary>
+        /// Retorna a tabela completa de itempedido
+        /// </summary>
         public ItemPedidoController(IItemPedidoRepository itempedidoRepository)
         {
             this.itempedidoRepository = itempedidoRepository;
@@ -32,6 +35,9 @@ namespace DotnetOrderAI.Controllers
         }
         #endregion
 
+        /// <summary>
+        /// Retorna a tabela completa de itempedido
+        /// </summary>
         #region GET para buscar um item usando o ID
         [HttpGet("{id:int}")]
         public async Task<ActionResult<ItemPedido>> getItemPedido(int id)
@@ -50,6 +56,12 @@ namespace DotnetOrderAI.Controllers
         }
         #endregion
 
+        /// <summary>
+        /// Inserção de uma nova itempedido
+        /// </summary>
+        /// <response code="201">Retorna itempedido criada</response>
+        /// <response code="400">Se o Request for enviado nulo</response>
+        /// <response code="500">Se houver algum erro no banco de dados</response>
         #region POST para criar um novo itempedido
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
@@ -72,6 +84,9 @@ namespace DotnetOrderAI.Controllers
         }
         #endregion
 
+        /// <summary>
+        /// Altera itempedido com o id especificado
+        /// </summary>
         #region PUT para atualizar um item
         [HttpPut("{id:int}")]
         public async Task<ActionResult<ItemPedido>> UpdateEmrpegado([FromBody] ItemPedido itempedido)
@@ -90,6 +105,9 @@ namespace DotnetOrderAI.Controllers
         }
         #endregion
 
+        /// <summary>
+        /// Deleta itempedido com o id especificado
+        /// </summary>
         #region DELETE para deletar um item
         [HttpDelete("{id:int}")]
         public async Task<ActionResult<ItemPedido>> DeleteItemPedido(int id)
@@ -99,9 +117,9 @@ namespace DotnetOrderAI.Controllers
                 var result = await itempedidoRepository.GetItemPedido(id);
                 if (result == null) return NotFound($"Item com id = {id} não encontrado");
 
-                itempedidoRepository.DeleteItemPedido(id);
+                await itempedidoRepository.DeleteItemPedido(id);
 
-                return result;
+                return Ok("Usuário deletado com sucesso.");
             }
             catch (Exception)
             {

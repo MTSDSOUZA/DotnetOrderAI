@@ -8,6 +8,6 @@ namespace DotnetOrderAI.Repository.Interface
         Task<ItemPedido> GetItemPedido(int itemId);
         Task<ItemPedido> AddItemPedido(ItemPedido user);
         Task<ItemPedido> UpdateItemPedido(ItemPedido user);
-        void DeleteItemPedido(int itemId);
+        Task DeleteItemPedido(int itemId);
     }
 }
