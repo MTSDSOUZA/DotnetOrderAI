@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace DotnetOrderAI.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class PedidoController : ControllerBase
     {
         #region Injeção de dependência
@@ -107,7 +109,5 @@ namespace DotnetOrderAI.Controllers
             }
         }
         #endregion
-    }
-    {
     }
 }
